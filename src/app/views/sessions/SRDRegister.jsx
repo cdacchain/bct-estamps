@@ -1,5 +1,5 @@
-import { useTheme } from '@emotion/react';
-import { LoadingButton } from '@mui/lab';
+import { useTheme } from "@emotion/react";
+import { LoadingButton } from "@mui/lab";
 import {
   Card,
   Checkbox,
@@ -11,211 +11,216 @@ import {
   MenuItem,
   Select,
   TextField,
-} from '@mui/material';
-import { Box, styled } from '@mui/system';
-import { Paragraph } from 'app/components/Typography';
-import useAuth from 'app/hooks/useAuth';
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+  Typography,
+} from "@mui/material";
+import { Box, styled } from "@mui/system";
+import { Paragraph } from "app/components/Typography";
+import useAuth from "app/hooks/useAuth";
+import { Formik } from "formik";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import Dreamer from "./dreamer.svg";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
-const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
+const FlexBox = styled(Box)(() => ({ display: "flex", alignItems: "center" }));
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
+const JustifyBox = styled(FlexBox)(() => ({ justifyContent: "center" }));
 
 const ContentBox = styled(JustifyBox)(() => ({
-  height: '100%',
-  padding: '32px',
-  background: 'rgba(0, 0, 0, 0.01)',
+  height: "100%",
+  padding: "32px",
+  background: "rgba(0, 0, 0, 0.01)",
 }));
 
 const JWTRegister = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100vh !important',
-  '& .card': {
+  background: "#1A2038",
+  minHeight: "100vh !important",
+  "& .card": {
     maxWidth: 800,
     minHeight: 400,
-    margin: '1rem',
-    display: 'flex',
+    margin: "1rem",
+    display: "flex",
     borderRadius: 12,
-    alignItems: 'center',
+    alignItems: "center",
   },
 }));
 
 // inital login credentials
 const initialValues = {
-  email: '',
-  password: '',
-  confirmPassword: '',
-  username: '',
-  state: '',
+  email: "",
+  password: "",
+  confirmPassword: "",
+  username: "",
+  state: "",
   remember: true,
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
+    .min(6, "Password must be 6 character length")
+    .required("Password is required!"),
   confirmPassword: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!'),
-  state: Yup.string().required('Please provide the State'),
+    .min(6, "Password must be 6 character length")
+    .required("Password is required!"),
+  email: Yup.string()
+    .email("Invalid Email address")
+    .required("Email is required!"),
+  state: Yup.string().required("Please provide the State"),
 });
 
 const states = [
   {
-    name: 'Andhra Pradesh',
-    abbreviation: 'AP',
+    name: "Andhra Pradesh",
+    abbreviation: "AP",
   },
   {
-    name: 'Arunachal Pradesh',
-    abbreviation: 'AR',
+    name: "Arunachal Pradesh",
+    abbreviation: "AR",
   },
   {
-    name: 'Assam',
-    abbreviation: 'AS',
+    name: "Assam",
+    abbreviation: "AS",
   },
   {
-    name: 'Bihar',
-    abbreviation: 'BR',
+    name: "Bihar",
+    abbreviation: "BR",
   },
   {
-    name: 'Chhattisgarh',
-    abbreviation: 'CT',
+    name: "Chhattisgarh",
+    abbreviation: "CT",
   },
   {
-    name: 'Goa',
-    abbreviation: 'GA',
+    name: "Goa",
+    abbreviation: "GA",
   },
   {
-    name: 'Gujarat',
-    abbreviation: 'GJ',
+    name: "Gujarat",
+    abbreviation: "GJ",
   },
   {
-    name: 'Haryana',
-    abbreviation: 'HR',
+    name: "Haryana",
+    abbreviation: "HR",
   },
   {
-    name: 'Himachal Pradesh',
-    abbreviation: 'HP',
+    name: "Himachal Pradesh",
+    abbreviation: "HP",
   },
   {
-    name: 'Jharkhand',
-    abbreviation: 'JH',
+    name: "Jharkhand",
+    abbreviation: "JH",
   },
   {
-    name: 'Karnataka',
-    abbreviation: 'KA',
+    name: "Karnataka",
+    abbreviation: "KA",
   },
   {
-    name: 'Kerala',
-    abbreviation: 'KL',
+    name: "Kerala",
+    abbreviation: "KL",
   },
   {
-    name: 'Madhya Pradesh',
-    abbreviation: 'MP',
+    name: "Madhya Pradesh",
+    abbreviation: "MP",
   },
   {
-    name: 'Maharashtra',
-    abbreviation: 'MH',
+    name: "Maharashtra",
+    abbreviation: "MH",
   },
   {
-    name: 'Manipur',
-    abbreviation: 'MN',
+    name: "Manipur",
+    abbreviation: "MN",
   },
   {
-    name: 'Meghalaya',
-    abbreviation: 'ML',
+    name: "Meghalaya",
+    abbreviation: "ML",
   },
   {
-    name: 'Mizoram',
-    abbreviation: 'MZ',
+    name: "Mizoram",
+    abbreviation: "MZ",
   },
   {
-    name: 'Nagaland',
-    abbreviation: 'NL',
+    name: "Nagaland",
+    abbreviation: "NL",
   },
   {
-    name: 'Odisha',
-    abbreviation: 'OD',
+    name: "Odisha",
+    abbreviation: "OD",
   },
   {
-    name: 'Punjab',
-    abbreviation: 'PB',
+    name: "Punjab",
+    abbreviation: "PB",
   },
   {
-    name: 'Rajasthan',
-    abbreviation: 'RJ',
+    name: "Rajasthan",
+    abbreviation: "RJ",
   },
   {
-    name: 'Sikkim',
-    abbreviation: 'SK',
+    name: "Sikkim",
+    abbreviation: "SK",
   },
   {
-    name: 'Tamil Nadu',
-    abbreviation: 'TN',
+    name: "Tamil Nadu",
+    abbreviation: "TN",
   },
   {
-    name: 'Telangana',
-    abbreviation: 'TG',
+    name: "Telangana",
+    abbreviation: "TG",
   },
   {
-    name: 'Tripura',
-    abbreviation: 'TR',
+    name: "Tripura",
+    abbreviation: "TR",
   },
   {
-    name: 'Uttar Pradesh',
-    abbreviation: 'UP',
+    name: "Uttar Pradesh",
+    abbreviation: "UP",
   },
   {
-    name: 'Uttarakhand',
-    abbreviation: 'UL',
+    name: "Uttarakhand",
+    abbreviation: "UL",
   },
   {
-    name: 'West Bengal',
-    abbreviation: 'WB',
+    name: "West Bengal",
+    abbreviation: "WB",
   },
 ];
 
 const unionTerritories = [
   {
-    name: 'Andaman and Nicobar Islands',
-    abbreviation: 'AN',
+    name: "Andaman and Nicobar Islands",
+    abbreviation: "AN",
   },
   {
-    name: 'Chandigarh',
-    abbreviation: 'CH',
+    name: "Chandigarh",
+    abbreviation: "CH",
   },
   {
-    name: 'Dadar and Nagar Haveli',
-    abbreviation: 'DN',
+    name: "Dadar and Nagar Haveli",
+    abbreviation: "DN",
   },
   {
-    name: 'Daman and Diu',
-    abbreviation: 'DD',
+    name: "Daman and Diu",
+    abbreviation: "DD",
   },
   {
-    name: 'Delhi',
-    abbreviation: 'DL',
+    name: "Delhi",
+    abbreviation: "DL",
   },
   {
-    name: 'Jammu and Kashmir',
-    abbreviation: 'JK',
+    name: "Jammu and Kashmir",
+    abbreviation: "JK",
   },
   {
-    name: 'Ladakh',
-    abbreviation: 'LA',
+    name: "Ladakh",
+    abbreviation: "LA",
   },
   {
-    name: 'Lakshadweep',
-    abbreviation: 'LD',
+    name: "Lakshadweep",
+    abbreviation: "LD",
   },
   {
-    name: 'Pondicherry',
-    abbreviation: 'PY',
+    name: "Pondicherry",
+    abbreviation: "PY",
   },
 ];
 
@@ -230,7 +235,7 @@ const SRDRegister = () => {
     const { username, email, password, state } = values;
     try {
       register(username, email, password, state);
-      navigate('/');
+      navigate("/");
       setLoading(false);
     } catch (e) {
       console.log(e);
@@ -244,11 +249,7 @@ const SRDRegister = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <ContentBox>
-              <img
-                width="100%"
-                alt="Register"
-                src="/assets/images/illustrations/posting_photo.svg"
-              />
+              <img width="100%" alt="Register" src={Dreamer} />
             </ContentBox>
           </Grid>
 
@@ -261,7 +262,14 @@ const SRDRegister = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -316,8 +324,26 @@ const SRDRegister = () => {
                       onBlur={handleBlur}
                       value={values.confirmPassword}
                       onChange={handleChange}
-                      helperText={touched.confirmPassword && errors.confirmPassword}
-                      error={Boolean(errors.confirmPassword && touched.confirmPassword)}
+                      helperText={
+                        touched.confirmPassword && errors.confirmPassword
+                      }
+                      error={Boolean(
+                        errors.confirmPassword && touched.confirmPassword
+                      )}
+                      sx={{ mb: 2 }}
+                    />
+                    <TextField
+                      fullWidth
+                      size="small"
+                      //name="confirmPassword"
+                      type="number"
+                      label="Phone Number"
+                      variant="outlined"
+                      //onBlur={handleBlur}
+                      //value={values.confirmPassword}
+                      //onChange={handleChange}
+                      //helperText={touched.confirmPassword && errors.confirmPassword}
+                      //error={Boolean(errors.confirmPassword && touched.confirmPassword)}
                       sx={{ mb: 2 }}
                     />
                     <FormControl
@@ -326,7 +352,9 @@ const SRDRegister = () => {
                       size="small"
                       error={Boolean(errors.state && touched.state)}
                     >
-                      <InputLabel id="demo-simple-select-label">State</InputLabel>
+                      <InputLabel id="demo-simple-select-label">
+                        State
+                      </InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -366,17 +394,26 @@ const SRDRegister = () => {
                       error={Boolean(errors.pincode && touched.pincode)}
                       sx={{ mb: 2 }}
                     /> */}
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
+                    <Box>
+                      <Box sx={{ display: "flex" }}>
+                        <Typography
+                          sx={{
+                            border: "1px solid black",
+                            letterSpacing: 5,
+                            fontWeight: "bolder",
+                            flexGrow: 1,
+                          }}
+                        >
+                          syer5
+                        </Typography>
+                        <RefreshIcon />
+                      </Box>
+                      <TextField
                         size="small"
-                        name="remember"
-                        onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
+                        fullWidth
+                        placeholder="Enter Captcha"
                       />
-
-                      <Paragraph fontSize={13}>I am not a bot</Paragraph>
-                    </FlexBox>
+                    </Box>
 
                     <LoadingButton
                       type="submit"
@@ -392,7 +429,10 @@ const SRDRegister = () => {
                       Already have an account?
                       <NavLink
                         to="/session/srdlogin"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
+                        style={{
+                          color: theme.palette.primary.main,
+                          marginLeft: 5,
+                        }}
                       >
                         Login
                       </NavLink>

@@ -64,7 +64,7 @@ function AddDenomination() {
   return (
     <Container>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <h2>Available Denomination</h2>
+        <h2>Available Denominations</h2>
         <Button variant="contained" onClick={handleOpenSecond}>+ New</Button>
       </Box>
       <Box>

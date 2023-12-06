@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <StyledEngineProvider injectFirst>
-    <BrowserRouter>
+    <BrowserRouter basename='/bct-estamps'>
       <CssBaseline />
       <App />
     </BrowserRouter>

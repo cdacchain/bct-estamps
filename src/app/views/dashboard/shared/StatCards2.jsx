@@ -52,18 +52,11 @@ const StatCards2 = () => {
       <Grid item xs={12} md={6}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
-            </FabIcon>
             <H3 textcolor={'#08ad6c'}>Available EStamps</H3>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>2.8M</H1>
-            <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon className="icon">expand_less</Icon>
-            </IconBox>
-            <Span textcolor={'#08ad6c'}>(+21%)</Span>
+            <H1>10000</H1>
           </ContentBox>
         </Card>
       </Grid>
@@ -71,18 +64,25 @@ const StatCards2 = () => {
       <Grid item xs={12} md={6}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: bgError, overflow: 'hidden' }}>
-              <Icon sx={{ color: textError }}>star_outline</Icon>
-            </FabIcon>
+  
             <H3 textcolor={textError}>Defaced EStamps</H3>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>2.1k</H1>
-            <IconBox sx={{ background: bgError }}>
-              <Icon className="icon">expand_less</Icon>
-            </IconBox>
-            <Span textcolor={textError}>(+21%)</Span>
+            <H1>2000</H1>
+          </ContentBox>
+        </Card>
+      </Grid>
+
+      <Grid item xs={12} md={6}>
+        <Card elevation={3} sx={{ p: 2 }}>
+          <ContentBox>
+  
+            <H3 textcolor={textError}>Void EStamps</H3>
+          </ContentBox>
+
+          <ContentBox sx={{ pt: 2 }}>
+            <H1>100</H1>
           </ContentBox>
         </Card>
       </Grid>

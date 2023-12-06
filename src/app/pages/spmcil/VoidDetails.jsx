@@ -15,6 +15,8 @@ import {
   styled,
 } from '@mui/material';
 import React from 'react';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
 
 const Container = styled('div')(({ theme }) => ({
   margin: '30px',
@@ -37,7 +39,7 @@ function VoidDetails() {
       spuniqueno: 11111,
       bctuniqueno: 11111,
       purpose: 'House Rent Aggrement',
-      status: 'Deface',
+      status: 'Defaced',
     },
     {
       id: 2,
@@ -323,6 +325,7 @@ function VoidDetails() {
               <TableCell align="center">BCT Unique No</TableCell>
               <TableCell align="center">Purpose</TableCell>
               <TableCell align="center">Status</TableCell>
+              <TableCell align="center"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -335,6 +338,7 @@ function VoidDetails() {
                 <TableCell align="center">{row.bctuniqueno}</TableCell>
                 <TableCell align="center">{row.purpose}</TableCell>
                 <TableCell align="center">{row.status}</TableCell>
+                <TableCell align="center"><MoreHorizIcon/></TableCell>
               </TableRow>
             ))}
           </TableBody>

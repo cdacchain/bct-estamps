@@ -11,6 +11,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Typography
 } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { Paragraph } from 'app/components/Typography';
@@ -19,6 +20,10 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import Dreamer from "./dreamer.svg"
+import RefreshIcon from "@mui/icons-material/Refresh";
+
+
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -310,7 +315,7 @@ const JwtRegister = () => {
               <img
                 width="100%"
                 alt="Register"
-                src="/assets/images/illustrations/posting_photo.svg"
+                src={Dreamer}
               />
             </ContentBox>
           </Grid>
@@ -442,7 +447,20 @@ const JwtRegister = () => {
                         <FormHelperText>{errors.organisation}</FormHelperText>
                       )}
                     </FormControl>
-
+                    <TextField
+                      fullWidth
+                      size="small"
+                      //name="confirmPassword"
+                      type="number"
+                      label="Phone Number"
+                      variant="outlined"
+                      //onBlur={handleBlur}
+                      //value={values.confirmPassword}
+                      //onChange={handleChange}
+                      //helperText={touched.confirmPassword && errors.confirmPassword}
+                      //error={Boolean(errors.confirmPassword && touched.confirmPassword)}
+                      sx={{ mb: 2 }}
+                    />
                     <TextField
                       fullWidth
                       size="small"
@@ -485,17 +503,22 @@ const JwtRegister = () => {
                       error={Boolean(errors.pincode && touched.pincode)}
                       sx={{ mb: 2 }}
                     />
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
-                        size="small"
-                        name="remember"
-                        onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
-                      />
-
-                      <Paragraph fontSize={13}>I am not a bot</Paragraph>
-                    </FlexBox>
+                    <Box>
+                      <Box sx={{ display: "flex" }}>
+                        <Typography
+                          sx={{
+                            border: "1px solid black",
+                            letterSpacing: 5,
+                            fontWeight: "bolder",
+                            flexGrow:1
+                          }}
+                        >
+                          syer5
+                        </Typography>
+                        <RefreshIcon />
+                      </Box>
+                      <TextField size="small" fullWidth placeholder="Enter Captcha" />
+                    </Box>
 
                     <LoadingButton
                       type="submit"

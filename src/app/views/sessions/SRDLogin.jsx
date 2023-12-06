@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import { Card, Checkbox, Grid, TextField, Typography } from '@mui/material';
 import { Box, styled, useTheme } from '@mui/system';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
@@ -7,6 +7,10 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import Dreamer from "./dreamer.svg"
+import RefreshIcon from "@mui/icons-material/Refresh";
+
+
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -70,7 +74,7 @@ const SRDLogin = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
+              <img src={Dreamer} width="100%" alt="" />
             </JustifyBox>
           </Grid>
 
@@ -114,7 +118,22 @@ const SRDLogin = () => {
                       error={Boolean(errors.password && touched.password)}
                       sx={{ mb: 1.5 }}
                     />
-
+                     <Box>
+                      <Box sx={{ display: "flex" }}>
+                        <Typography
+                          sx={{
+                            border: "1px solid black",
+                            letterSpacing: 5,
+                            fontWeight: "bolder",
+                            flexGrow:1
+                          }}
+                        >
+                          syer5
+                        </Typography>
+                        <RefreshIcon />
+                      </Box>
+                      <TextField size="small" fullWidth placeholder="Enter Captcha" />
+                    </Box>
                     <FlexBox justifyContent="space-between">
                       <FlexBox gap={1}>
                         <Checkbox

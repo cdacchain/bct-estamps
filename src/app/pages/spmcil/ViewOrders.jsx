@@ -67,7 +67,7 @@ function ViewOrders() {
       state: 'Punjab',
       bankName: 'Punjab National Bank',
       branch: 'Branch 1',
-      status: 'Completed',
+      status: 'Generated',
     },
     {
       orderNo: 2,
@@ -161,7 +161,7 @@ function ViewOrders() {
                 <TableCell align="center">{row.orderDate}</TableCell>
                 <TableCell align="center">{row.status}</TableCell>
                 <TableCell align="center">
-                  {row.status === 'Completed' ? (
+                  {row.status === 'Generated' ? (
                     <IconButton>
                       <a href={TestData} download="testfile.pdf">
                         <PictureAsPdfIcon />
@@ -227,7 +227,7 @@ function ViewOrders() {
                     <TableCell align="center">{row.denomination}</TableCell>
                     <TableCell align="center">{row.requiredNo}</TableCell>
                     <TableCell align="center">
-                      <Button onClick={handleOpenChild}>Upload unique nos</Button>
+                      <Button onClick={handleOpenChild}>Upload unique IDs</Button>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -252,7 +252,7 @@ function ViewOrders() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <h2 id="child-modal-title">Upload unique id</h2>
+          <h2 id="child-modal-title">Upload unique IDs</h2>
           <Box
             sx={{
               border: '3px dashed black',
@@ -272,7 +272,7 @@ function ViewOrders() {
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Button onClick={handleCloseChild}>Close</Button>
             <Button variant="contained" onClick={handleCloseChild}>
-              Submit
+              Upload
             </Button>
           </Box>
         </Box>

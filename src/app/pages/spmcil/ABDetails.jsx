@@ -171,39 +171,64 @@ const bankDetails = [
   {
     slno: 1,
     name: 'Bank of Baroda',
+    branch: 'Branch 1',
     abbreviation: 'BOB',
-    address:"123 Main Road"
+    contactPerson:"Rahul",
+    email:"test@bob.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
   },
   {
     slno: 2,
     name: 'Bank of India',
+    branch: 'Branch 1',
     abbreviation: 'BOI',
-    address:"123 Main Road"
+    contactPerson:"Aditya",
+    email:"test@boi.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
+
   },
   {
     slno: 3,
     name: 'Bank of Maharashtra',
+    branch: 'Branch 1',
     abbreviation: 'BOM',
-    address:"123 Main Road"
+    contactPerson:"Ram",
+    email:"test@bom.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
   },
   {
     slno: 4,
     name: 'Punjab National Bank',
+    branch: 'Branch 1',
     abbreviation: 'PNB',
-    address:"123 Main Road"
+    contactPerson:"Bikash",
+    email:"test@pnb.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
   },
   {
     slno: 5,
     name: 'Punjab & Sind Bank',
+    branch: 'Branch 1',
     abbreviation: 'PSB',
-    address:"123 Main Road"
+    contactPerson:"Sudip",
+    email:"test@psb.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
   },
 
   {
     slno: 6,
     name: 'State Bank of India',
+    branch: 'Branch 1',
     abbreviation: 'SBI',
-    address:"123 Main Road"
+    contactPerson:"James",
+    email:"test@sbi.com",
+    address:"123 Main Road",
+    phoneno:"9876543210"
   },
 ];
 
@@ -252,7 +277,19 @@ function ABDetails() {
                 Bank Name
               </TableCell>
               <TableCell align="center" colSpan={2}>
+                Branch
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
+                Contact Person
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
+                Email
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
                 Address
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
+                Phone No
               </TableCell>
             </TableRow>
           </TableHead>
@@ -266,7 +303,19 @@ function ABDetails() {
                   {row.name}
                 </TableCell>
                 <TableCell align="center" colSpan={2}>
+                  {row.branch}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {row.contactPerson}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {row.email}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
                   {row.address}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {row.phoneno}
                 </TableCell>
               </TableRow>
             ))}

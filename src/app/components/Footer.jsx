@@ -42,7 +42,7 @@ const Footer = () => {
           <FooterContent>
             <Span sx={{ m: 'auto' }}></Span>
             <Paragraph sx={{ m: 0 }}>
-              Design and Developed by CDAC Hyderbad
+              Designed and Developed by C-DAC Hyderabad
             </Paragraph>
           </FooterContent>
         </AppFooter>

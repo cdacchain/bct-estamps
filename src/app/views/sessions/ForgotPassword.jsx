@@ -1,6 +1,8 @@
 import { Box, Button, Card, Grid, styled, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Dreamer from "./dreamer.svg"
+
 
 const FlexBox = styled(Box)(() => ({
   display: 'flex',
@@ -40,7 +42,7 @@ const ForgotPassword = () => {
         <Grid container>
           <Grid item xs={12}>
             <JustifyBox p={4}>
-              <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
+              <img width="300" src={Dreamer} alt="" />
             </JustifyBox>
 
             <ContentBox>

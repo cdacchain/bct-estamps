@@ -1,50 +1,54 @@
-import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
-import { Paragraph } from 'app/components/Typography';
-import useAuth from 'app/hooks/useAuth';
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+import { LoadingButton } from "@mui/lab";
+import { Card, Checkbox, Grid, TextField, Typography } from "@mui/material";
+import { Box, styled, useTheme } from "@mui/system";
+import { Paragraph } from "app/components/Typography";
+import useAuth from "app/hooks/useAuth";
+import { Formik } from "formik";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import Dreamer from "./dreamer.svg";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
-const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
+const FlexBox = styled(Box)(() => ({ display: "flex", alignItems: "center" }));
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
+const JustifyBox = styled(FlexBox)(() => ({ justifyContent: "center" }));
 
 const ContentBox = styled(Box)(() => ({
-  height: '100%',
-  padding: '32px',
-  position: 'relative',
-  background: 'rgba(0, 0, 0, 0.01)',
+  height: "100%",
+  padding: "32px",
+  position: "relative",
+  background: "rgba(0, 0, 0, 0.01)",
 }));
 
 const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
-  minHeight: '100% !important',
-  '& .card': {
+  background: "#1A2038",
+  minHeight: "100% !important",
+  "& .card": {
     maxWidth: 800,
     minHeight: 400,
-    margin: '1rem',
-    display: 'flex',
+    margin: "1rem",
+    display: "flex",
     borderRadius: 12,
-    alignItems: 'center',
+    alignItems: "center",
   },
 }));
 
 // inital login credentials
 const initialValues = {
-  email: 'test@bank.com',
-  password: 'dummyPass',
+  email: "test@bank.com",
+  password: "dummyPass",
   remember: true,
 };
 
 // form field validation schema
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, 'Password must be 6 character length')
-    .required('Password is required!'),
-  email: Yup.string().email('Invalid Email address').required('Email is required!'),
+    .min(6, "Password must be 6 character length")
+    .required("Password is required!"),
+  email: Yup.string()
+    .email("Invalid Email address")
+    .required("Email is required!"),
 });
 
 const JwtLogin = () => {
@@ -58,7 +62,7 @@ const JwtLogin = () => {
     setLoading(true);
     try {
       await login(values.email, values.password);
-      navigate('/');
+      navigate("/");
     } catch (e) {
       setLoading(false);
     }
@@ -70,7 +74,7 @@ const JwtLogin = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
+              <img src={Dreamer} width="100%" alt="" />
             </JustifyBox>
           </Grid>
 
@@ -83,7 +87,14 @@ const JwtLogin = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
               >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                }) => (
                   <form onSubmit={handleSubmit}>
                     <TextField
                       fullWidth
@@ -114,6 +125,22 @@ const JwtLogin = () => {
                       error={Boolean(errors.password && touched.password)}
                       sx={{ mb: 1.5 }}
                     />
+                    <Box>
+                      <Box sx={{ display: "flex" }}>
+                        <Typography
+                          sx={{
+                            border: "1px solid black",
+                            letterSpacing: 5,
+                            fontWeight: "bolder",
+                            flexGrow:1
+                          }}
+                        >
+                          syer5
+                        </Typography>
+                        <RefreshIcon />
+                      </Box>
+                      <TextField size="small" fullWidth placeholder="Enter Captcha" />
+                    </Box>
 
                     <FlexBox justifyContent="space-between">
                       <FlexBox gap={1}>
@@ -150,7 +177,10 @@ const JwtLogin = () => {
                       Don't have an account?
                       <NavLink
                         to="/session/signup"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
+                        style={{
+                          color: theme.palette.primary.main,
+                          marginLeft: 5,
+                        }}
                       >
                         Register
                       </NavLink>

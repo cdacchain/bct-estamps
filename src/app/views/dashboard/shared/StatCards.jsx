@@ -1,7 +1,7 @@
 import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
 import { Small } from 'app/components/Typography';
 
-const StyledCard = styled(Card)(({ theme }) => ({
+export const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
@@ -29,9 +29,10 @@ const Heading = styled('h6')(({ theme }) => ({
 
 const StatCards = () => {
   const cardList = [
-    { name: 'No of states onborded', amount: 10, icon: 'group' },
-    { name: 'No of Orders', amount: '8500', icon: 'store' },
-    { name: 'No of Estamps Generated', amount: '305000', icon: 'shopping_cart' },
+    { name: 'States Onboarded', amount: 10, icon: 'group' },
+    { name: 'Orders', amount: '8500', icon: 'store' },
+    { name: 'Estamps Generated', amount: '305000', icon: 'shopping_cart' },
+    { name: 'Deface', amount: '5000', icon: 'note' },
   ];
 
   return (

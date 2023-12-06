@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 import {
   Box,
   Button,
@@ -13,45 +13,45 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-} from '@mui/material';
-import React from 'react';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+} from "@mui/material";
+import React from "react";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
-const Container = styled('div')(({ theme }) => ({
-  margin: '30px',
-  [theme.breakpoints.down('sm')]: {
-    margin: '16px',
+const Container = styled("div")(({ theme }) => ({
+  margin: "30px",
+  [theme.breakpoints.down("sm")]: {
+    margin: "16px",
   },
-  '& .breadcrumb': {
-    marginBottom: '30px',
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: '16px',
+  "& .breadcrumb": {
+    marginBottom: "30px",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "16px",
     },
   },
 }));
-const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-   clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-    border:'2px solid red'
-  });
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+  border: "2px solid red",
+});
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   pt: 2,
   px: 4,
@@ -60,10 +60,42 @@ const style = {
 
 function ViewOrders() {
   const rows = [
-    { orderNo: 1, orderDate: '20-07-2002',state:"Punjab", status: 'Completed' },
-    { orderNo: 2, orderDate: '20-08-2002',state:"Tamil Nadu", status: 'Received' },
-    { orderNo: 3, orderDate: '20-09-2002',state:"Maharastra", status: 'Pending' },
-    { orderNo: 4, orderDate: '20-10-2002',state:"Gujurat", status: 'Received' },
+    {
+      orderNo: 1,
+      orderDate: "20-07-2002",
+      bank: "State Bank of India",
+      branch: "Branch1",
+      contactDetails:987654321,
+      email:"test@sbi.com",
+      status: "Completed",
+    },
+    {
+      orderNo: 2,
+      orderDate: "20-08-2002",
+      bank: "Union Bank of India",
+      branch: "Branch2",
+      contactDetails:987654321,
+      email:"test@ubi.com",
+      status: "Received",
+    },
+    {
+      orderNo: 3,
+      orderDate: "20-09-2002",
+      bank: "Punjab National Bank",
+      branch: "Branch3",
+      contactDetails:987654321,
+      email:"test@pnb.com",
+      status: "Pending",
+    },
+    {
+      orderNo: 4,
+      orderDate: "20-10-2002",
+      bank: "Punjab & Sind Bank",
+      branch: "Branch4",
+      contactDetails:987654321,
+      email:"test@psb.com",
+      status: "Received",
+    },
   ];
   const orderDetailsData = [
     { orderNo: 1, denomination: 10, requiredNo: 20 },
@@ -101,14 +133,18 @@ function ViewOrders() {
           <TableHead>
             <TableRow
               sx={{
-                '& .MuiTableCell-head': {
-                  color: 'white',
-                  backgroundColor: '#495057',
+                "& .MuiTableCell-head": {
+                  color: "white",
+                  backgroundColor: "#495057",
                 },
               }}
             >
               <TableCell align="center">Order No.</TableCell>
               <TableCell align="center">Order Date</TableCell>
+              <TableCell align="center">Bank Name</TableCell>
+              <TableCell align="center">Branch</TableCell>
+              <TableCell align="center">Phone No</TableCell>
+              <TableCell align="center">Email</TableCell>
               <TableCell align="center">Status</TableCell>
               <TableCell align="center">View Details</TableCell>
             </TableRow>
@@ -117,12 +153,16 @@ function ViewOrders() {
             {rows.map((row) => (
               <TableRow
                 key={row.orderNo}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row" align="center">
                   {row.orderNo}
                 </TableCell>
                 <TableCell align="center">{row.orderDate}</TableCell>
+                <TableCell align="center">{row.bank}</TableCell>
+                <TableCell align="center">{row.branch}</TableCell>
+                <TableCell align="center">{row.contactDetails}</TableCell>
+                <TableCell align="center">{row.email}</TableCell>
                 <TableCell align="center">{row.status}</TableCell>
                 <TableCell align="center">
                   <IconButton onClick={handleOpen}>
@@ -155,12 +195,12 @@ function ViewOrders() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow
-                 sx={{
-                  '& .MuiTableCell-head': {
-                    color: 'white',
-                    backgroundColor: '#495057',
-                  },
-                }}
+                  sx={{
+                    "& .MuiTableCell-head": {
+                      color: "white",
+                      backgroundColor: "#495057",
+                    },
+                  }}
                 >
                   <TableCell align="center">Order No.</TableCell>
                   <TableCell align="center">Denomination</TableCell>
@@ -171,7 +211,7 @@ function ViewOrders() {
                 {orderDetailsData.map((row) => (
                   <TableRow
                     key={row.orderNo}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row" align="center">
                       {row.orderNo}

@@ -52,18 +52,44 @@ const StatCards3 = () => {
       <Grid item xs={12} md={6}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
-            </FabIcon>
-            <H3 textcolor={'#08ad6c'}>No of Banks Onboarded</H3>
+            <H3 textcolor={'#08ad6c'}>Banks Onboarded</H3>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
             <H1>10</H1>
-            <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon className="icon">expand_less</Icon>
-            </IconBox>
-            <Span textcolor={'#08ad6c'}>(+21%)</Span>
+          </ContentBox>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Card elevation={3} sx={{ p: 2 }}>
+          <ContentBox>
+            <H3 textcolor={textError}>Total Defaced Estamps</H3>
+          </ContentBox>
+
+          <ContentBox sx={{ pt: 2 }}>
+            <H1>100</H1>
+          </ContentBox>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Card elevation={3} sx={{ p: 2 }}>
+          <ContentBox>
+            <H3 textcolor={'#08ad6c'}>Total Estamps</H3>
+          </ContentBox>
+
+          <ContentBox sx={{ pt: 2 }}>
+            <H1>500</H1>
+          </ContentBox>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Card elevation={3} sx={{ p: 2 }}>
+          <ContentBox>
+            <H3 textcolor={textError}>Total Void Estamps</H3>
+          </ContentBox>
+
+          <ContentBox sx={{ pt: 2 }}>
+            <H1>5</H1>
           </ContentBox>
         </Card>
       </Grid>

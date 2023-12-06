@@ -26,9 +26,9 @@ const Container = styled('div')(({ theme }) => ({
 
 function SRDDetails() {
   const srdData = [
-    { slno: 1, state: 'Telangana', address: '123 Main Road' },
-    { slno: 2, state: 'Punjab', address: '234 Main Road' },
-    { slno: 3, state: 'Maharastra', address: '345 Main Road' },
+    { slno: 1, state: 'Telangana',name:"Arvind",email:"teleganarevudept@gov.in",address: '123 Main Road',phone:9876543210 },
+    { slno: 2, state: 'Punjab',name:"Shikandar",email:"punjabrevudept@gov.in",address: '234 Main Road',phone:9876543210 },
+    { slno: 3, state: 'Maharashtra',name:"Sudip",email:"maharastrarevudept@gov.in",address: '345 Main Road',phone:9876543210 },
   ];
   return (
     <Container>
@@ -49,7 +49,16 @@ function SRDDetails() {
                 State
               </TableCell>
               <TableCell align="center" colSpan={2}>
+                Name
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
+                Email
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
                 Address
+              </TableCell>
+              <TableCell align="center" colSpan={2}>
+                Phone No
               </TableCell>
               <TableCell align="center" colSpan={2}>
                 Enable
@@ -66,7 +75,16 @@ function SRDDetails() {
                   {row.state}
                 </TableCell>
                 <TableCell align="center" colSpan={2}>
+                  {row.name}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {row.email}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
                   {row.address}
+                </TableCell>
+                <TableCell align="center" colSpan={2}>
+                  {row.phone}
                 </TableCell>
                 <TableCell align="center" colSpan={2}>
                   <Switch defaultChecked size="small" />
